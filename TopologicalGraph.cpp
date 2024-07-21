@@ -22,9 +22,7 @@ void TopologicalGraph::topological_sort_util(int node)
 	}
 	visited[node] = true;
 	for (int adj : adjs[node]) {
-		if (!visited[adj]) {
-			topological_sort_util(adj);
-		}
+		topological_sort_util(adj);
 	}
 	order.push_back(node);
 }
