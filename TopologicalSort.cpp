@@ -4,12 +4,25 @@
 #include <iostream>
 #include<vector>
 #include"TopologicalGraph.h"
-int main()
-{
+void test1() {
     vector<vector<int>>edges = { {0, 2}, {1, 4}, {5, 3}, {0, 5},{1, 0},  { 2, 4 }, {3, 4} };
     TopologicalGraph g(6, edges);
-    vector<int>order=g.topological_sort();
+    vector<int>order = g.topological_sort();
+    cout << "test1:" << endl;
     g.print_order(order);
+}
+void test2() {
+    vector<vector<int>>edges = { {0, 2}, {1, 4}, {5, 3}, {0, 5},{1, 0},  { 2, 4 }, {3, 4}, {4, 0} };
+    TopologicalGraph g(6, edges);
+    vector<int>order = g.topological_sort();
+    cout << "test2:" << endl;
+    g.print_order(order);
+}
+int main()
+{
+    
+    test1();
+    test2();
     std::cout << "Hello World!\n";
 }
 

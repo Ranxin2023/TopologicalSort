@@ -17,13 +17,22 @@ void TopologicalGraph::add_edge(vector<int>& edge)
 
 void TopologicalGraph::topological_sort_util(int node)
 {
-	if (visited[node]) {
+	if (visited[node]==2) {
 		return;
 	}
-	visited[node] = true;
+	if (visited[node]==1) {
+		cycle = true;
+		return;
+	}
+	visited[node] = 1;
 	for (int adj : adjs[node]) {
 		topological_sort_util(adj);
+		if (cycle) {
+			order = {};
+			return;
+		}
 	}
+	visited[node] = 2;
 	order.push_back(node);
 }
 
@@ -44,6 +53,10 @@ vector<int> TopologicalGraph::topological_sort()
 
 void TopologicalGraph::print_order(vector<int>&new_order)
 {
+	if (new_order.empty()) {
+		cout << "Find cycle" << endl;
+		return;
+	}
 	for (int node: new_order) {
 		cout << node << "\t";
 	}

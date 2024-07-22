@@ -7,9 +7,9 @@ class TopologicalGraph {
 private:
 	int num_of_node;
 	vector<vector<int>>adjs;
-	vector<bool>visited;
+	vector<int>visited;
 	vector<int>order;
-
+	bool cycle;
 public:
 	TopologicalGraph(int, vector<vector<int>>&);
 	void add_edge(vector<int>& edge);
